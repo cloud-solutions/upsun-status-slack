@@ -1,4 +1,4 @@
-# Upsun → Slack
+# Upsun Status → Slack
 
 A small [Cloudflare Worker](https://developers.cloudflare.com/workers/) that polls
 [Upsun's status page](https://status.upsun.com) every 5 minutes and posts new or
