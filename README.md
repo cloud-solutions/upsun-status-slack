@@ -13,6 +13,8 @@ publish two stable JSON feeds though, which this worker consumes:
 - `https://status.upsun.com/data/events.json`
 
 ## What you get
+<img width="990" height="270" alt="Slack preview" src="https://github.com/user-attachments/assets/00d4d913-0b1b-4fdc-aa4a-e2ec188b49c9" />
+
 
 - One message per new incident, planned maintenance, or status change.
 - Filter by region (`ch-1.platform.sh`, `de-2.platform.sh`, `core-systems`, …) and/or
