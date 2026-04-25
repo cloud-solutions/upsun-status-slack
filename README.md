@@ -58,7 +58,7 @@ incident/event id is keyed against `{status, updated_at, last_event_ts}` with a
 
 ```sh
 git clone <repo-url>
-cd upsun-slack
+cd upsun-status-slack
 npm install
 cp wrangler.jsonc.example wrangler.jsonc
 ```
@@ -150,7 +150,7 @@ gotcha](#first-deploy-gotcha) below if you want to suppress that initial burst.
 - **Trigger manually** (without waiting for cron): your worker exposes a
   `/run?key=<last-8-chars-of-webhook-URL>` endpoint:
   ```sh
-  curl "https://upsun-slack.<your-subdomain>.workers.dev/run?key=<last-8-chars>"
+  curl "https://upsun-status-slack.<your-subdomain>.workers.dev/run?key=<last-8-chars>"
   ```
 - **Reset state** (re-treat all current items as new):
   ```sh

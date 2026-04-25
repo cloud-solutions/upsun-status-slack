@@ -44,7 +44,7 @@ if (names.length === 0) {
   process.exit(0);
 }
 
-const file = join(tmpdir(), `upsun-slack-keys-${Date.now()}.json`);
+const file = join(tmpdir(), `upsun-status-slack-keys-${Date.now()}.json`);
 writeFileSync(file, JSON.stringify(names));
 
 console.log(`Deleting ${names.length} key(s) from ${BINDING}...`);

@@ -1,5 +1,5 @@
 {
-  "name": "upsun-slack",
+  "name": "upsun-status-slack",
   "version": "0.1.0",
   "private": true,
   "description": "Cloudflare Worker that polls Upsun's status page and posts to Slack",

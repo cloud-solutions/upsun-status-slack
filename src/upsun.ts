@@ -87,7 +87,7 @@ async function fetchJson<T>(url: string, root: "incidents" | "events"): Promise<
   try {
     const res = await fetch(url, {
       signal: ctrl.signal,
-      headers: { "user-agent": "upsun-slack-worker/0.1 (+cloudflare-workers)" },
+      headers: { "user-agent": "upsun-status-slack/0.1 (+cloudflare-workers)" },
     });
     if (!res.ok) {
       console.error(`fetch ${url} returned ${res.status}`);

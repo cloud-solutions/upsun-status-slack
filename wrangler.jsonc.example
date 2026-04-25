@@ -15,7 +15,7 @@
   // ---------------------------------------------------------------------------
 
   "$schema": "https://unpkg.com/wrangler/config-schema.json",
-  "name": "upsun-slack",
+  "name": "upsun-status-slack",
   "main": "src/index.ts",
   "compatibility_date": "2026-04-01",
 
