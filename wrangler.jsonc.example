@@ -1,0 +1,59 @@
+{
+  // ---------------------------------------------------------------------------
+  // Template for `wrangler.jsonc`.
+  //
+  // Setup steps (one-time):
+  //   1. cp wrangler.jsonc.example wrangler.jsonc
+  //   2. Run `npx wrangler kv namespace create STATUS_STATE`, paste the returned
+  //      id below in place of "PASTE_YOUR_KV_NAMESPACE_ID_HERE".
+  //   3. Edit ALLOW_REGIONS / ALLOW_COMPONENTS / TIMEZONE / LOCALE to taste.
+  //   4. Run `npx wrangler secret put SLACK_WEBHOOK_URL`, paste your webhook URL.
+  //   5. Run `npx wrangler deploy`.
+  //
+  // wrangler.jsonc is gitignored so your KV id and personal preferences stay
+  // local. Re-edit any of the `vars` below and `npx wrangler deploy` to apply.
+  // ---------------------------------------------------------------------------
+
+  "$schema": "https://unpkg.com/wrangler/config-schema.json",
+  "name": "upsun-slack",
+  "main": "src/index.ts",
+  "compatibility_date": "2026-04-01",
+
+  // Run every 5 minutes. https://developers.cloudflare.com/workers/configuration/cron-triggers/
+  "triggers": {
+    "crons": ["*/5 * * * *"]
+  },
+
+  // Cloudflare Workers KV namespace used as memory: which incidents/events have
+  // we already posted about. Create one with `npx wrangler kv namespace create
+  // STATUS_STATE` and paste the returned id below.
+  "kv_namespaces": [
+    {
+      "binding": "STATUS_STATE",
+      "id": "PASTE_YOUR_KV_NAMESPACE_ID_HERE"
+    }
+  ],
+
+  // Filter is OR across the two lists: an item posts if ANY of its region_ids
+  // matches ALLOW_REGIONS OR ANY of its component names matches ALLOW_COMPONENTS.
+  // - ["*"] in either list = "allow all on that axis" (short-circuits the other).
+  // - []    = "match nothing on that axis" — useful when you only want
+  //   region-based filtering, or only component-based filtering.
+  //
+  // To find real region IDs and component names for your environment, deploy
+  // with ["*"] once, then prune by reading `npx wrangler tail` skip-logs.
+  //
+  // TIMEZONE: any IANA timezone (e.g. "Europe/Zurich", "UTC", "America/New_York").
+  // LOCALE:   any BCP-47 locale tag (e.g. "de-CH", "en-US", "en-GB").
+  //           Affects month/day order and timezone-name abbreviation only.
+  //           Times are always 24-hour.
+  "vars": {
+    "ALLOW_REGIONS": ["*"],
+    "ALLOW_COMPONENTS": ["*"],
+    "TIMEZONE": "UTC",
+    "LOCALE": "en-US"
+  }
+
+  // SLACK_WEBHOOK_URL is set as a Cloudflare secret, not in this file:
+  //   npx wrangler secret put SLACK_WEBHOOK_URL
+}

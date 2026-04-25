@@ -1,0 +1,9 @@
+node_modules/
+.wrangler/
+.dev.vars
+*.log
+.DS_Store
+
+# Live wrangler config — contains your KV namespace id and personal allowlists.
+# Use wrangler.jsonc.example as the committed template.
+wrangler.jsonc
